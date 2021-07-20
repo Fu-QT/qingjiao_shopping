@@ -60,18 +60,16 @@
 
 			<view class="footer flex-box" style="height: 80px;padding-bottom: 20px;">
 				
-				<view style="width: 20%;align-items: center;justify-content: center;" class="flex-box">
-					<u-icon name="shopping-cart-fill" color="#065c8b" size="80">
-						<u-badge size="mini" type="success" count="5"></u-badge>
-					</u-icon>
-					
+				<view style="width: 20%;align-items: center;justify-content: center;position: relative;" class="flex-box">
+					<u-badge count="5" :offset="[20, 20]"></u-badge>
+					<u-icon name="shopping-cart-fill" color="#065c8b" size="80"></u-icon>
 				</view>
 				<view style="flex: 1;justify-content: space-between;" class="flex-box">
 					<view>
-						
+						总价
 					</view>
 					<view>
-						
+						结算按钮
 					</view>
 				</view>
 				
