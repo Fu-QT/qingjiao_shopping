@@ -5,6 +5,8 @@ import api from 'api/Api';
 import WxServer from "./wx/WxServer";
 //#endif
 
+//被动监听器
+import 'default-passive-events';
 import DateUtiles from './utiles/DateUtiles.js';
 import PathUtiles from "./utiles/PathUtiles.js";
 Vue.config.productionTip = false;

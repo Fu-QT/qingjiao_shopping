@@ -39,13 +39,18 @@
 								黑椒牛排{{i}}
 							</view>
 							<view class="flex-box" style="justify-content: space-between;">
-								<view class="price-box" style="color: #ba1a32;">
+								<view class="price-box" style="color: red">
 									￥15
 								</view>
 								<view>
-									<u-icon v-if="specificFlag" name="plus-circle-fill" color="#065c8b" size="40"
-										@click="toCart"></u-icon>
-									<u-button v-else size="mini" :custom-style="customStyle" @click="toSpecific">选规格</u-button>
+									<u-button v-if="specificFlag" size="mini" @click="specificShow = true">
+										选规格
+									</u-button>
+									<view v-else @click.stop="toCart">
+										<u-icon name="plus-circle-fill" color="#065c8b" size="40">
+										</u-icon>
+									</view>
+
 								</view>
 							</view>
 						</view>
@@ -53,18 +58,107 @@
 				</view>
 			</view>
 			<view class="footer flex-box">
-				<view class="flex-box bottom-rirht-box">
+				<view class="flex-box bottom-left-box" @click="cartShow = !cartShow">
 					<u-badge count="5" :offset="[20, 20]"></u-badge>
 					<u-icon name="shopping-cart-fill" color="#065c8b" size="80"></u-icon>
 				</view>
-				<view style="flex: 1;justify-content: space-between;align-items: center;" class="flex-box">
-					<view>
-						总价
+				<view class="flex-box bottom-rirht-box">
+					<view style="color: red">
+						￥15
 					</view>
-					<view>
-						结算按钮
+					<view style="margin-right: 10px;">
+						<u-button size="mini" :disabled="checkAccountFlag ? false:true"
+							:type="checkAccountFlag? 'primary':''" @click="checkAccount"
+							:custom-style="checkAccountFlag ? customStyle:''">
+							{{checkAccountFlag ? "去结算":"请选择"}}
+						</u-button>
 					</view>
 				</view>
+			</view>
+		</view>
+		<!-- 弹出层 -->
+		<view>
+			<!-- 规格弹出层 -->
+			<view>
+				<u-popup v-model="specificShow" mode="center" border-radius="10" width="80%">
+					<view style="min-height: 200px;" class="container-box">
+						<!-- 商品名称 -->
+						<view style="font-size: 16px;text-align: center;line-height: 40px;">
+							旺仔牛奶
+						</view>
+						<view class="flex-box" style="justify-content: space-between;align-items: center;height: 40px;">
+							数量
+							<view>
+								<u-number-box></u-number-box>
+							</view>
+						</view>
+						<view>
+							规格
+							<view class="flex-box" style="flex-wrap: wrap;margin: 0 -10px;">
+								<view v-for="(item,index) in specificList" @click="choiceSpacific(index)"
+									style="width: 33.3%;padding: 10px;">
+									<view :class="{specificcurrbox:item.flag}"
+										style="text-align: center;padding: 5px 0px;border-radius: 5px;background-color: #f0f0f0;border:1px solid transparent;">
+										fnasof
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+					<view style="width: 100%;background-color: #f0f0f0;">
+						<view class="container-box flex-box"
+							style="justify-content: space-between;align-items: center;height: 60px;">
+							<view style="color: red;">
+								￥15
+							</view>
+							<view>
+								<u-button size="mini" type="warning" @click="toCacheCart">
+									加入购物车
+								</u-button>
+
+							</view>
+						</view>
+					</view>
+				</u-popup>
+			</view>
+
+
+			<!-- 购物车弹出层 -->
+			<view>
+				<u-popup v-model="cartShow" mode="bottom" border-radius="20" z-index="888">
+					<view class="container-box" style="min-height: 200px;padding-bottom: 80px;">
+						<view class="flex-box" style="justify-content: space-between;height: 40px;align-items: center;">
+							<view>
+								已选商品
+							</view>
+							<view class="flex-box" style="align-items: center;" @click="clearCart">
+								<u-icon name="trash" size="40"></u-icon>
+								清空
+							</view>
+						</view>
+						<view class="flex-box" style="height: 80px;margin: 10px auto;" v-for="i in 2">
+							<u-image height="80px" width="80px" shape="square" borderRadius="5px"
+								src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg"></u-image>
+							<view style="flex: 1; flex-direction: column;justify-content: space-between;"
+								class="flex-box mar-left-small">
+								<view>
+									旺仔牛奶
+								</view>
+								<view>
+									规格[常温]
+								</view>
+								<view class="flex-box" style="justify-content: space-between;">
+									<view style="color: red;">
+										￥5
+									</view>
+									<view>
+										<u-number-box></u-number-box>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</u-popup>
 			</view>
 		</view>
 	</view>
@@ -132,9 +226,46 @@
 				],
 				commodityList: [],
 				customStyle: {
-					color: '#065c8b'
+					backgroundColor: '#065c8b'
 				},
-				specificFlag: false
+				specificList: [{
+						label: "item1",
+						flag: true
+					},
+					{
+						label: "item1greggsgs",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+				],
+				specificFlag: true,
+
+				specificShow: false,
+				cartShow: false,
+				checkAccountFlag: true
 			}
 		},
 		methods: {
@@ -147,17 +278,40 @@
 					}
 				}
 			},
+			choiceSpacific(index) {
+				console.log(index)
+				for (var i = 0; i < this.specificList.length; i++) {
+					if (i == index) {
+						this.specificList[i].flag = true
+					} else {
+						this.specificList[i].flag = false
+					}
+				}
+			},
 			navToDetails() {
 				console.log("navToDetails")
 			},
 			toCart() {
 				console.log("toCart")
 			},
-			toSpecific() {
-				console.log("toSpecific")
-			}
-			
-			
+			// toSpecific() {
+			// 	console.log("toSpecific")
+			// 	this.specificShow = true;
+			// },
+			// showCart() {
+			// 	console.log("showCart")
+			// },
+			checkAccount() {
+				console.log("checkAccount")
+			},
+			toCacheCart() {
+				console.log("toCacheCart")
+			},
+			clearCart() {
+				console.log("clearCart")
+			},
+
+
 		}
 	}
 </script>
@@ -196,6 +350,11 @@
 		font-weight: bold;
 	}
 
+	.specificcurrbox {
+		border: 1px solid #065C8B !important;
+		color: #065c8b;
+	}
+
 	.commodity-left-box {
 		width: 30%;
 		overflow: scroll;
@@ -225,14 +384,22 @@
 	}
 
 	.footer {
+		background-color: #f8f8f8;
 		height: 80px;
 		padding-bottom: 20px;
+		z-index: 999;
 	}
 
-	.bottom-rirht-box {
+	.bottom-left-box {
 		width: 20%;
 		align-items: center;
 		justify-content: center;
 		position: relative;
+	}
+
+	.bottom-rirht-box {
+		flex: 1;
+		justify-content: space-between;
+		align-items: center;
 	}
 </style>

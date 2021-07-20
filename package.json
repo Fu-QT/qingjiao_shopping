@@ -18,10 +18,11 @@
   },
   "homepage": "https://github.com/YanxinNet/uView#readme",
   "dependencies": {
-    "vue-i18n": "^8.20.0",
     "axios": "^0.21.1",
     "crypto-js": "^4.0.0",
+    "default-passive-events": "^2.0.0",
     "jweixin-module": "^1.6.0",
-    "vconsole": "^3.8.1"
+    "vconsole": "^3.8.1",
+    "vue-i18n": "^8.20.0"
   }
 }
