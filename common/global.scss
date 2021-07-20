@@ -1,0 +1,39 @@
+
+
+.flex-box {
+	display: flex;
+}
+.column-flex-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.column-average-flex-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.container-box {
+	width: 94%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+
+.mar-top-10 {
+	margin-top: 10px;
+}
+.mar-left-10 {
+	margin-left: 10px;
+}
+
+.nb-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.nb-body {
+	flex: 1 1 100%;
+	overflow-x: scroll;
+}

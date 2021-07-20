@@ -1,0 +1,71 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [{
+		"path": "pages/myPackageA/home/home",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+	}],
+	"subPackages": [{
+		"root": "pages/myPackageA",
+		"pages": [{
+			"path": "home/home",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "shopping/shopping",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "mine/mine",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}]
+	}],
+
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uView",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF",
+		"navigationStyle":"custom"
+	}
+	// "tabBar": {
+	// 	"color": "#909399",
+	// 	"selectedColor": "#303133",
+	// 	"backgroundColor": "#FFFFFF",
+	// 	"borderStyle": "black",
+	// 	"list": [{
+	// 			"pagePath": "pages/myPackageA/home/home",
+	// 			"iconPath": "static/home_checked.png",
+	// 			"selectedIconPath": "static/home_checked.png",
+	// 			"text": "首页"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/myPackageA/shopping/shopping",
+	// 			"iconPath": "static/home_checked.png",
+	// 			"selectedIconPath": "static/home_checked.png",
+	// 			"text": "首页"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/myPackageA/mine/mine",
+	// 			"iconPath": "static/home_checked.png",
+	// 			"selectedIconPath": "static/home_checked.png",
+	// 			"text": "首页"
+	// 		}
+
+	// 	]
+	// }
+}
