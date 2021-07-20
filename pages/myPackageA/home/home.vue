@@ -18,53 +18,46 @@
 				</view>
 			</view>
 		</view>
-
 		<view class="nb-container">
-
 			<u-notice-bar mode="horizontal" :volume-icon="false" :list="noticeList"></u-notice-bar>
-
 			<!-- 商品橱窗 -->
 			<view class="nb-body flex-box">
-				<view style="min-width: 20%;flex-direction: column;overflow: scroll;background-color: #f0f0f0;"
-					class="flex-box">
-					<view v-for="(item,index) in tagList"
-						style="height: 50px; flex-shrink: 0;width: 100%;text-align: center;padding: 0px 5px;"
-						class="column-flex-box" :class="{currbox:item.flag}" @click="choice(index)">
+				<!-- 左边盒子 -->
+				<view class="commodity-left-box">
+					<view v-for="(item,index) in tagList" class="tags-box" :class="{currbox:item.flag}"
+						@click="choice(index)">
 						{{item.label}}
 					</view>
 				</view>
-
-
-				<view style="flex: 1 1 100%;overflow: scroll;">
-					<view class="commodity-item-box flex-box" style="padding: 10px;" v-for="i in 25">
+				<!-- 右边盒子 -->
+				<view class="commodity-right-box">
+					<view class="flex-box" style="padding: 10px;" v-for="i in 25" @click="navToDetails">
 						<u-image shape="square" borderRadius="10px" width="100px" height="80px"
 							src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg"></u-image>
-						<view style="flex: 1;flex-direction: column;justify-content: space-between;"
-							class="mar-left-small flex-box">
+						<view class="mar-left-small flex-box commodity-content-box">
 							<view>
 								黑椒牛排{{i}}
 							</view>
 							<view class="flex-box" style="justify-content: space-between;">
-								<view>
-									价格
+								<view class="price-box" style="color: #ba1a32;">
+									￥15
 								</view>
 								<view>
-									按钮
+									<u-icon v-if="specificFlag" name="plus-circle-fill" color="#065c8b" size="40"
+										@click="toCart"></u-icon>
+									<u-button v-else size="mini" :custom-style="customStyle" @click="toSpecific">选规格</u-button>
 								</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-
-
-			<view class="footer flex-box" style="height: 80px;padding-bottom: 20px;">
-				
-				<view style="width: 20%;align-items: center;justify-content: center;position: relative;" class="flex-box">
+			<view class="footer flex-box">
+				<view class="flex-box bottom-rirht-box">
 					<u-badge count="5" :offset="[20, 20]"></u-badge>
 					<u-icon name="shopping-cart-fill" color="#065c8b" size="80"></u-icon>
 				</view>
-				<view style="flex: 1;justify-content: space-between;" class="flex-box">
+				<view style="flex: 1;justify-content: space-between;align-items: center;" class="flex-box">
 					<view>
 						总价
 					</view>
@@ -72,13 +65,8 @@
 						结算按钮
 					</view>
 				</view>
-				
 			</view>
-
 		</view>
-
-
-
 	</view>
 </template>
 
@@ -114,6 +102,18 @@
 						flag: true
 					},
 					{
+						label: "item1greggsgs",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+					{
+						label: "item1",
+						flag: false
+					},
+					{
 						label: "item1",
 						flag: false
 					},
@@ -128,9 +128,13 @@
 					{
 						label: "item1",
 						flag: false
-					}
+					},
 				],
-				commodityList: []
+				commodityList: [],
+				customStyle: {
+					color: '#065c8b'
+				},
+				specificFlag: false
 			}
 		},
 		methods: {
@@ -142,7 +146,18 @@
 						this.tagList[i].flag = false
 					}
 				}
+			},
+			navToDetails() {
+				console.log("navToDetails")
+			},
+			toCart() {
+				console.log("toCart")
+			},
+			toSpecific() {
+				console.log("toSpecific")
 			}
+			
+			
 		}
 	}
 </script>
@@ -172,9 +187,52 @@
 	.item-box-label {
 		text-align: center;
 		height: 40px;
+		word-break: break-all;
 	}
 
 	.currbox {
 		background-color: #fff;
+		color: #065c8b;
+		font-weight: bold;
+	}
+
+	.commodity-left-box {
+		width: 30%;
+		overflow: scroll;
+		align-items: center;
+		background-color: #f0f0f0;
+
+	}
+
+	.tags-box {
+		overflow: hidden;
+		width: 100%;
+		word-break: break-all;
+		padding: 12px 8px;
+		text-align: center;
+
+	}
+
+	.commodity-right-box {
+		flex: 1 1 100%;
+		overflow: scroll;
+	}
+
+	.commodity-content-box {
+		flex: 1;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.footer {
+		height: 80px;
+		padding-bottom: 20px;
+	}
+
+	.bottom-rirht-box {
+		width: 20%;
+		align-items: center;
+		justify-content: center;
+		position: relative;
 	}
 </style>
