@@ -4,7 +4,7 @@
 			<view class="shadow-box" style="border-radius: 20rpx;padding: 10rpx 0;">
 				<u-swiper :list="swiperList"></u-swiper>
 			</view>
-			
+
 			<view class="nb-wrap-flex-box shadow-box middle-box">
 				<view v-for="item in commodityList" style="width: 20%;padding: 10rpx;">
 					<view class="nb-center">
@@ -13,28 +13,27 @@
 					<view class="nb-center">{{item.name}}</view>
 				</view>
 			</view>
-			
+
 			<view class="fs-medium" style="padding: 10rpx 0;">猜你喜欢</view>
-			
-			<view class="nb-flex-box business-box" v-for="(item,index) in business"
-				@click="navToshopping(item)">
-				<view class="nb-center" style="width: 30%;">
-					<image style="width: 200rpx;height: 200rpx;" :src="item.ICON" mode=""></image>
-				</view>
-				<view class="nb-column-space-between" style="margin-left: 20rpx;width: 70%;">
-					<view class="fs-medium beyond-hidden">{{item.NAME}}</view>
-					<view class="nb-flex-box">
-						<view style="color: #FA3534;">4.5分</view>
-						<view class="c-gray" style="margin-left: 10rpx;">月售275</view>
-						<view class="c-gray" style="margin-left: 10rpx;">人均￥17</view>
+			<view class="distance-bottom">
+				<view class="nb-flex-box business-box" v-for="(item,index) in business" @click="navToshopping(item)">
+					<view class="nb-center" style="width: 30%;">
+						<image style="width: 200rpx;height: 200rpx;" :src="item.ICON" mode=""></image>
 					</view>
-			
-					<view class="nb-flex-box fs-mini">
-						<view style="padding: 2px;border: 1px solid #d55328;color: #d5613a;">20减5</view>
+					<view class="nb-column-space-between" style="margin-left: 20rpx;width: 70%;">
+						<view class="fs-medium beyond-hidden">{{item.NAME}}</view>
+						<view class="nb-flex-box">
+							<view style="color: #FA3534;">4.5分</view>
+							<view class="c-gray" style="margin-left: 10rpx;">月售275</view>
+							<view class="c-gray" style="margin-left: 10rpx;">人均￥17</view>
+						</view>
+
+						<view class="nb-flex-box fs-mini">
+							<view style="padding: 2px;border: 1px solid #d55328;color: #d5613a;">20减5</view>
+						</view>
 					</view>
 				</view>
 			</view>
-			
 		</view>
 	</view>
 </template>
@@ -145,5 +144,9 @@
 		background-color: #FFFFFF;
 		border-radius: 20rpx;
 		margin-top: 20rpx;
+	}
+
+	.distance-bottom {
+		padding-bottom: 20px;
 	}
 </style>

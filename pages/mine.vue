@@ -148,7 +148,12 @@
 			},
 			address(){
 				uni.navigateTo({
-					url:'address/address'
+					url:'myPackageA/mine/address/address'
+				})
+			},
+			navToOrder(){
+				uni.navigateTo({
+					url:'myPackageA/orders/orders'
 				})
 			}
 

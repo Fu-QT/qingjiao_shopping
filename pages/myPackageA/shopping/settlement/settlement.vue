@@ -4,10 +4,12 @@
 		<view class="nb-body">
 			<view class="container-box" style="margin-top: 20rpx;">
 				<!-- <view class="fs-mini" style="border-bottom: 1rpx #f1f1f1 solid;padding-bottom: 30rpx;">杨二妹炒洋芋</view> -->
-				<view class="nb-between-center" v-for="(item,index) in 10" style="margin-bottom: 20rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;">
+				<view class="nb-between-center" v-for="(item,index) in 10"
+					style="margin-bottom: 20rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;">
 					<view class="nb-flex-box">
 						<view>
-							<image style="width: 120rpx;height: 120rpx;" src="../../../../static/fshan.jpg_.webp" mode="">
+							<image style="width: 120rpx;height: 120rpx;" src="../../../../static/fshan.jpg_.webp"
+								mode="">
 							</image>
 						</view>
 						<view style="margin-left: 20rpx;">
@@ -15,15 +17,15 @@
 							<view class="c-gray fs-mini" style="margin-top: 6rpx;">微辣</view>
 							<view class="c-gray fs-mini" style="margin-top: 6rpx;">x1</view>
 						</view>
-			
+
 					</view>
 					<view class="fs-mini" style="color: red;">￥5.8</view>
 				</view>
-				
+
 			</view>
 		</view>
 		<view style="height: 150rpx;">
-			<u-button type="primary">提交订单</u-button>
+			<u-button type="primary" @click="payment">提交订单</u-button>
 		</view>
 
 	</view>
@@ -33,10 +35,24 @@
 	export default {
 		data() {
 			return {
-
+				commodity: [ //商品
+					{
+						picture: '', //商品图片
+						TradeName: '', //商品名称
+						Specifications: '', //规格
+						count: '', //商品数量
+						price: '', //商品价格
+					}
+				]
 			}
 		},
 		methods: {
+			payment(){
+				console.log("提交订单")
+				// uni.navigateTo({
+				// 	url:''
+				// })
+			}
 
 		}
 	}
