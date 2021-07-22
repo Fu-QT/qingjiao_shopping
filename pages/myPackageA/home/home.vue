@@ -113,7 +113,22 @@
 			},
 			sectionChange(index) {
 				this.curNow = index;
+			},
+			
+			// 搜索商家
+			query(){
+				let cnt = {
+					// STATUS:"ON",
+					offset:0,
+					count:10
+				}
+				this.$api.MallMerchantApi.search(cnt).then(data => {
+					console.log("data",data)
+				})
 			}
+		},
+		onLoad() {
+			this.query()
 		}
 	}
 </script>
