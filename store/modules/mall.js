@@ -77,13 +77,11 @@ export default {
 					delete state.cacheCart[key]
 				}
 			}
-			setTimeout(() => {
 				let temp = {
 					...state.cacheCart
 				}
 				state.cacheCart = temp
 				cache.setStorage("cacheCart", state.cacheCart)
-			}, 1000)
 
 
 		},

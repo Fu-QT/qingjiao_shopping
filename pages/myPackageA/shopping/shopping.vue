@@ -35,28 +35,34 @@
 								<view class=" u-skeleton-fillet">
 									{{ item.NAME }}
 								</view>
-								
+
 							</view>
 						</view>
 						<!-- 右边盒子 -->
 						<view class="commodity-right-box">
 							<view class="flex-box" style="padding: 10px;" v-for="item in commodityList"
 								@click="navToDetails(item)">
-								<u-image shape="square" borderRadius="10px" width="100px" height="80px"
-									src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg"></u-image>
+								<view class="u-skeleton-fillet">
+									<u-image shape="square" borderRadius="10px" width="100px" height="80px"
+										src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg">
+									</u-image>
+								</view>
 								<view class="mar-left-small flex-box commodity-content-box">
 									<view class=" u-skeleton-fillet">
 										{{ item.NAME }}
 									</view>
 									<view class="flex-box" style="justify-content: space-between;">
-										<view class="price-box" style="color: red;">
+										<view class="price-box u-skeleton-fillet" style="color: red;">
 											￥{{ item.MIN_PRICE }}
 										</view>
 										<view>
-											<u-button v-if="item.flag" size="mini" @click="choiceSpacific(item)">
-												选规格
-											</u-button>
-											<view v-else class="flex-box" style="align-items: center;">
+											<view v-if="item.flag" class="u-skeleton-fillet">
+												<u-button size="mini" @click="choiceSpacific(item)">
+													选规格
+												</u-button>
+											</view>
+											<view v-else class="flex-box u-skeleton-fillet"
+												style="align-items: center;">
 												<view class="flex-box" v-if="getCount(item) > 0">
 													<view @click.stop="toCacheCart(item,-1)">
 														<u-icon name="minus-circle-fill" color="#065c8b" size="40">
@@ -272,6 +278,7 @@
 					id: data.ID,
 					format: format
 				})
+
 			},
 
 			cartCalculate() {
@@ -285,17 +292,24 @@
 				this.refresh = !this.refresh
 			},
 			init() {
-				for (var i = 0; i < 5; i++) {
+				for (var i = 0; i < 9; i++) {
 					this.tagList.push({})
+				}
+				for (var i = 0; i < 4; i++) {
+					this.commodityList.push({
+						NAME: "",
+						FORMAT_VALUE:[],
+						ID:""
+					})
 				}
 			}
 		},
 		onLoad() {
 			this.init()
-			setTimeout(()=>{
+			setTimeout(() => {
 				this.queryGroup()
-			},10000)
-			
+			}, 500)
+
 		},
 		watch: {
 			"$store.state.mall.cacheCart"(v) {
