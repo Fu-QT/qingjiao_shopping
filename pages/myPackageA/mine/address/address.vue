@@ -2,7 +2,7 @@
 	<view class="nb-container" style="background-color: #f1f1f1;">
 		<u-navbar back-text="返回" title="收货地址"></u-navbar>
 		<view class="nb-body" v-if="addressList.length != 0">
-			<view class="container-box card-box" v-for="(item,index) in addressList">
+			<view class="container-box card-box shadow-box" v-for="(item,index) in addressList">
 				<view class="nb-flex-box container-box"
 					style="padding: 20rpx 0;border-bottom: 1rpx #f1f1f1 solid;">
 					<view class="nb-align-center nb-self-adaption">
@@ -129,5 +129,8 @@
 		height: 60rpx;
 		background-color: #F0AD4E;
 		border-radius: 100rpx;
+	}
+	.shadow-box {
+		box-shadow: 3px 3px 5px 1px #dadada;
 	}
 </style>

@@ -1,7 +1,7 @@
 import api from "../Ajax";
 
 function _ajax(url, data) {
-	return api.ajax("/mallMerchant" + url, data)
+	return api.ajax("/mall_merchant" + url, data)
 }
 const _api = {};
 // 搜索商户
