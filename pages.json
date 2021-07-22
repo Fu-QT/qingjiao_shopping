@@ -28,14 +28,16 @@
 			"path": "mine/editAddress/editAddress",
 			"style": {
 				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle":"custom"
 			}
 
 		}, {
 			"path": "mine/address/address",
 			"style": {
 				"navigationBarTitleText": "收货地址",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle":"custom"
 			}
 		},
 		{
@@ -46,7 +48,27 @@
 			}
 		}
 		
-		]
+		    ,{
+                    "path" : "shopping/settlement/settlement",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "结算",
+                    "enablePullDownRefresh": false,
+					"navigationStyle":"custom"
+                }
+                
+                }
+                ,{
+                    "path" : "orders/orders",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "订单",
+                    "enablePullDownRefresh": false,
+					"navigationStyle":"custom"
+                }
+                
+                }
+            ]
 	}],
 
 	"globalStyle": {

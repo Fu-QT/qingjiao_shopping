@@ -1,10 +1,9 @@
 <template>
 	<view class="nb-container" style="background-color: #f1f1f1;">
 		<u-navbar back-text="返回" title="收货地址"></u-navbar>
-		<view class="nb-body" v-if="addressList.length != 0">
-			<view class="container-box card-box shadow-box" v-for="(item,index) in addressList">
-				<view class="nb-flex-box container-box"
-					style="padding: 20rpx 0;border-bottom: 1rpx #f1f1f1 solid;">
+		<view class="nb-body container-box" v-if="addressList.length != 0">
+			<view class=" card-box shadow-box" v-for="(item,index) in addressList">
+				<view class="nb-flex-box" style="padding: 20rpx;border-bottom: 1rpx #f1f1f1 solid;">
 					<view class="nb-align-center nb-self-adaption">
 						<view class="name-box nb-flex-center fs-mini">
 							<!-- 判断名字长度 -->
@@ -30,7 +29,7 @@
 					</view>
 				</view>
 
-				<view class="nb-between-center fs-mini container-box" style="padding: 20rpx 0;">
+				<view class="nb-between-center fs-mini" style="padding: 20rpx;">
 					<!-- 默认和单选框 -->
 					<view class="nb-align-center">
 						<radio style="transform:scale(0.7);" @click="change(index)" :checked="index === current" />
@@ -44,7 +43,7 @@
 		<view v-else class="nb-flex-center" style="line-height: 200px;">
 			<view>暂无收货地址</view>
 		</view>
-		<view style="background-color: #FFFFFF;">
+		<view style="background-color: #FFFFFF;height: 130rpx;">
 			<u-button type="primary" @click="preservation">+添加收货地址</u-button>
 		</view>
 
@@ -69,7 +68,7 @@
 						name: '王麻子',
 						address: '贵州省遵义市红花岗区中山路纪念公园',
 						telephone: 15508520852
-					}, 
+					},
 				],
 			}
 		},
@@ -130,6 +129,7 @@
 		background-color: #F0AD4E;
 		border-radius: 100rpx;
 	}
+
 	.shadow-box {
 		box-shadow: 3px 3px 5px 1px #dadada;
 	}
