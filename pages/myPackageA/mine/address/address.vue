@@ -1,10 +1,11 @@
 <template>
 	<view class="nb-container" style="background-color: #f1f1f1;">
+		<u-navbar back-text="返回" title="收货地址"></u-navbar>
 		<view class="nb-body" v-if="addressList.length != 0">
 			<view class="container-box card-box" v-for="(item,index) in addressList">
-				<view class="nb-between-center container-box"
+				<view class="nb-flex-box container-box"
 					style="padding: 20rpx 0;border-bottom: 1rpx #f1f1f1 solid;">
-					<view class="nb-align-center">
+					<view class="nb-align-center nb-self-adaption">
 						<view class="name-box nb-flex-center fs-mini">
 							<!-- 判断名字长度 -->
 							<view v-if="item.name.length <= 2">
@@ -19,11 +20,13 @@
 								<view class="fs-small" style="font-weight: bold;">{{item.name}}</view>
 								<view class="fs-small c-gray" style="margin-left: 10px;">{{item.telephone}}</view>
 							</view>
-							<view style="margin-top: 10rpx;">{{item.address}}</view>
+							<view class="nb-self-adaption" style="margin-top: 10rpx;">{{item.address}}</view>
 						</view>
 					</view>
-					<view class="nb-space-between" @click="edit(item)">
-						<u-icon name="edit-pen-fill" color="#2979ff" size="38"></u-icon>
+					<view class="nb-align-center" @click="edit(item)" style="width: 100rpx;">
+						<view class="nb-self-adaption nb-flex-center">
+							<u-icon name="edit-pen-fill" color="#cfcfcf" size="38"></u-icon>
+						</view>
 					</view>
 				</view>
 
@@ -35,14 +38,12 @@
 					</view>
 					<view @click="deleteAddress">删除</view>
 				</view>
-
 			</view>
+
 		</view>
 		<view v-else class="nb-flex-center" style="line-height: 200px;">
 			<view>暂无收货地址</view>
 		</view>
-
-
 		<view style="background-color: #FFFFFF;">
 			<u-button type="primary" @click="preservation">+添加收货地址</u-button>
 		</view>
@@ -54,7 +55,6 @@
 	export default {
 		data() {
 			return {
-
 				current: null,
 				addressList: [{
 						name: '张三',
@@ -69,19 +69,8 @@
 						name: '王麻子',
 						address: '贵州省遵义市红花岗区中山路纪念公园',
 						telephone: 15508520852
-					}, {
-						name: '王麻子',
-						address: '贵州省遵义市红花岗区中山路纪念公园中关村创业产业园3楼301',
-						telephone: 15508520852
-					}, {
-						name: '王麻子',
-						address: '贵州省遵义市红花岗区中山路纪念公园',
-						telephone: 15508520852
-					},
+					}, 
 				],
-
-
-
 			}
 		},
 		methods: {

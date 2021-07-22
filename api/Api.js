@@ -9,6 +9,7 @@ import SnsApi from './model/SnsApi.js'
 import TaskApi from './model/TaskApi.js'
 import SeatApi from './model/SeatApi.js'
 import WalletApi from './model/WalletApi.js'
+import MallMerchant from './model/MallMerchantApi.js'
 export default {
 	ContentApi,
 	WxApi,
@@ -20,5 +21,6 @@ export default {
 	SnsApi,
 	TaskApi,
 	SeatApi,
-	WalletApi
+	WalletApi,
+	MallMerchant
 }

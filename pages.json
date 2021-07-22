@@ -42,11 +42,12 @@
 		}, {
 			"path": "mine/address/address",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "收货地址",
 				"enablePullDownRefresh": false
 			}
-
-		}]
+		}
+		
+		]
 	}],
 
 	"globalStyle": {
