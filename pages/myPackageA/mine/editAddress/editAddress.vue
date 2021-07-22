@@ -11,40 +11,42 @@
 		</view>
 
 		<view class="container-box">
-			<u-form :model="form" ref="uForm">
-				<u-form-item label="收货人" prop="name" label-width="20%">
-					<u-input v-model="form.name" placeholder="请输入姓名" />
-					<view>+通讯录</view>
-				</u-form-item>
-				<u-form-item label="手机号码" prop="phone" label-width="20%">
-					<u-input v-model="form.phone" placeholder="请输入手机号码" />
-					<view class="c-gray">+86</view>
-					<u-icon name="arrow-right" color="#cacaca" size="28"></u-icon>
-				</u-form-item>
-				<u-form-item label="选择地区" prop="region" label-width="20%">
-					<u-input @tap="showRegionPicker" disabled type="text" v-model="form.region"
-						placeholder="省市区县、乡镇等" />
-					<u-icon name="arrow-right" color="#cacaca" size="28"></u-icon>
-				</u-form-item>
-				<u-form-item label="详细地址" prop="address" label-width="20%">
-					<u-input v-model="form.address" placeholder="请输入详细地址" />
-					<u-icon name="map-fill" color="#ffab4b" size="28"></u-icon>
-					定位
-				</u-form-item>
-			</u-form>
-			<u-picker mode="region" ref="uPicker" v-model="show" @confirm="confirm" />
-		</view>
-		<view class="nb-between-center container-box" style="margin-top: 40rpx;">
-			<view class="">
-				<view class="">设置默认地址</view>
-				<view class="">提醒：每次下单会默认推荐该地址</view>
+			<view>
+				<u-form :model="form" ref="uForm">
+					<u-form-item label="收货人" prop="name" label-width="20%">
+						<u-input v-model="form.name" placeholder="请输入姓名" />
+						<view>+通讯录</view>
+					</u-form-item>
+					<u-form-item label="手机号码" prop="phone" label-width="20%">
+						<u-input v-model="form.phone" placeholder="请输入手机号码" />
+						<view class="c-gray">+86</view>
+						<u-icon name="arrow-right" color="#cacaca" size="28"></u-icon>
+					</u-form-item>
+					<u-form-item label="选择地区" prop="region" label-width="20%">
+						<u-input @tap="showRegionPicker" disabled type="text" v-model="form.region"
+							placeholder="省市区县、乡镇等" />
+						<u-icon name="arrow-right" color="#cacaca" size="28"></u-icon>
+					</u-form-item>
+					<u-form-item label="详细地址" prop="address" label-width="20%">
+						<u-input v-model="form.address" placeholder="请输入详细地址" />
+						<u-icon name="map-fill" color="#ffab4b" size="28"></u-icon>
+						定位
+					</u-form-item>
+				</u-form>
+				<u-picker mode="region" ref="uPicker" v-model="show" @confirm="confirm" />
 			</view>
-			<view class="">
-				<switch color="red" @change="setDefault" />
+			<view class="nb-between-center" style="margin-top: 40rpx;">
+				<view class="">
+					<view class="">设置默认地址</view>
+					<view class="">提醒：每次下单会默认推荐该地址</view>
+				</view>
+				<view class="">
+					<switch color="red" @change="setDefault" />
+				</view>
 			</view>
-		</view>
-		<view class="container-box" style="margin-top: 100rpx;">
-			<u-button type="success" @click="submit">保存</u-button>
+			<view style="margin-top: 100rpx;">
+				<u-button type="success" @click="submit">保存</u-button>
+			</view>
 		</view>
 
 	</view>
@@ -101,7 +103,7 @@
 			}
 		},
 		methods: {
-			confirm(e){
+			confirm(e) {
 				console.log(e);
 				this.form.region = e.province.label + '-' + e.city.label + '-' + e.area.label;
 			},
@@ -127,7 +129,7 @@
 		},
 		// 接收状态
 		onLoad(event) {
-			console.log("event",event)
+			console.log("event", event)
 			this.edit = event.state
 			// console.log(event.upaddress.address)
 		},

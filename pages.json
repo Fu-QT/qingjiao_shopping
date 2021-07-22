@@ -46,7 +46,16 @@
 			}
 		}
 		
-		]
+		    ,{
+                    "path" : "shopping/settlement/settlement",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "结算",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 	}],
 
 	"globalStyle": {
