@@ -3,7 +3,13 @@
 		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [{
-		"path": "pages/myPackageA/home/home",
+		"path": "pages/home",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "pages/mine",
 		"style": {
 			"navigationBarTitleText": "",
 			"enablePullDownRefresh": false
@@ -11,22 +17,8 @@
 	}],
 	"subPackages": [{
 		"root": "pages/myPackageA",
-		"pages": [{
-			"path": "home/home",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
+		"pages": [ {
 			"path": "shopping/shopping",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
-			"path": "mine/mine",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
@@ -45,6 +37,13 @@
 				"navigationBarTitleText": "收货地址",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "index/index",
+			"style": {
+				"navigationBarTitleText": "收货地址",
+				"enablePullDownRefresh": false
+			}
 		}
 		
 		]
@@ -54,8 +53,8 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uView",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#FFFFFF",
-		"navigationStyle": "custom"
+		"backgroundColor": "#FFFFFF"
+		// "navigationStyle": "custom"
 	},
 	"tabBar": {
 		"color": "#909399",
@@ -63,13 +62,13 @@
 		"backgroundColor": "#FFFFFF",
 		"borderStyle": "black",
 		"list": [{
-				"pagePath": "pages/myPackageA/home/home",
+				"pagePath": "pages/home",
 				"iconPath": "static/home_checked.png",
 				"selectedIconPath": "static/home_checked.png",
 				"text": "广场"
 			},
 			{
-				"pagePath": "pages/myPackageA/mine/mine",
+				"pagePath": "pages/mine",
 				"iconPath": "static/home_checked.png",
 				"selectedIconPath": "static/home_checked.png",
 				"text": "我的"

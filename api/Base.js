@@ -9,8 +9,8 @@ export default {
 	pid: 2, //{1: '微信公众号',2:'微信小程序',3:'手机网站',4:'Web网页'}
 
 	//小程序
-	// appId: "wxe61259e52d3d6956",
+	appId: "wxe61259e52d3d6956",
 
 	//公众号
-	appId: "wx547972e25ec85006",
+	// appId: "wx547972e25ec85006",
 };

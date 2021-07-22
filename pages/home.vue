@@ -1,6 +1,8 @@
 <template>
-	<view style="background-color: #f1f1f1;">
-
+	<view style="background-color: #efefef;">
+		<view>
+			<u-subsection :list="list" :current="curNow" @change="sectionChange"></u-subsection>
+		</view>
 		<view class="container-box" style="border-radius: 20rpx;">
 			<u-swiper :list="swiperList"></u-swiper>
 		</view>
@@ -17,26 +19,30 @@
 
 		<view class="fs-medium container-box" style="padding: 10rpx 0;">猜你喜欢</view>
 
+		<view class="container-box">
 
-		<view class="nb-flex-box container-box business-box" v-for="(item,index) in business"
-			@click="navToshopping(item)">
-			<view class="nb-center" style="width: 30%;">
-				<image style="width: 200rpx;height: 200rpx;" :src="item.ICON" mode=""></image>
-			</view>
-			<view class="nb-column-space-between" style="margin-left: 20rpx;width: 70%;">
-				<view class="fs-medium beyond-hidden">{{item.NAME}}</view>
-				<view class="nb-flex-box">
-					<view style="color: #FA3534;">4.5分</view>
-					<view class="c-gray" style="margin-left: 10rpx;">月售275</view>
-					<view class="c-gray" style="margin-left: 10rpx;">人均￥17</view>
+			<view class="nb-flex-box " v-for="(item,index) in 10" @click="navToshopping"
+				style="background-color: #FFFFFF;margin-top: 20rpx;padding: 10rpx;border-radius: 20rpx;">
+				<view class="nb-center" style="width: 30%;">
+					<image style="width: 200rpx;height: 200rpx;"
+						src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg" mode="">
+					</image>
 				</view>
+				<view class="nb-column-space-between" style="margin-left: 10rpx;width: 70%;">
+					<view class="fs-medium beyond-hidden">张三展示柜张三展示柜张三展示柜张三展示柜</view>
+					<view class="nb-flex-box">
+						<view style="color: #FA3534;">4.5分</view>
+						<view class="c-gray" style="margin-left: 10rpx;">月售275</view>
+						<view class="c-gray" style="margin-left: 10rpx;">人均￥17</view>
+					</view>
 
-				<view class="nb-flex-box fs-mini">
-					<view style="padding: 2px;border: 1px solid #d55328;color: #d5613a;">20减5</view>
+					<view class="nb-flex-box fs-mini">
+						<view style="padding: 2px;border: 1px solid #d55328;color: #d5613a;">20减5</view>
+					</view>
 				</view>
 			</view>
+
 		</view>
-
 	</view>
 </template>
 
@@ -44,8 +50,16 @@
 	export default {
 		data() {
 			return {
-				business: [],
-
+				list: [{
+						name: '首页'
+					},
+					{
+						name: '家电'
+					},
+					{
+						name: '电脑办公'
+					}
+				],
 				curNow: 0,
 				swiperList: [{
 						image: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
@@ -93,30 +107,14 @@
 			}
 		},
 		methods: {
-			navToshopping(item) {
+			navToshopping() {
 				uni.navigateTo({
-					url: "../shopping/shopping"
+					url: "myPackageA/shopping/shopping"
 				})
 			},
 			sectionChange(index) {
 				this.curNow = index;
-			},
-
-			// 搜索商家
-			query() {
-				let cnt = {
-					STATUS: "ON",
-					offset: 0,
-					count: 10
-				}
-				this.$api.MallMerchantApi.search(cnt).then(data => {
-					console.log("data", data)
-					this.business = data
-				})
 			}
-		},
-		onLoad() {
-			this.query()
 		}
 	}
 </script>
@@ -128,13 +126,5 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		width: 100%;
-	}
-
-	.business-box {
-		background-color: #FFFFFF;
-		margin-top: 20rpx;
-		padding: 20rpx;
-		border-radius: 20rpx;
-		box-shadow: 3px 3px 5px 1px #dadada;
 	}
 </style>

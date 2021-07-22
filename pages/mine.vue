@@ -77,7 +77,7 @@
 </template>
 
 <script>
-	import Visitor from '../../../components/visitor/visitor.vue';
+	import Visitor from '../components/visitor/visitor.vue';
 	export default {
 		components: {
 			Visitor

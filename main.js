@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App';
 import api from 'api/Api';
+import Store from './store/index'
 //#ifdef H5
 import WxServer from "./wx/WxServer";
 //#endif
@@ -21,11 +22,11 @@ import uView from 'uview-ui';
 Vue.use(uView);
 
 // 此处为演示vuex使用，非uView的功能部分
-import store from '@/store';
+// import store from '@/store';
 
 // 引入uView提供的对vuex的简写法文件
-let vuexStore = require('@/store/$u.mixin.js');
-Vue.mixin(vuexStore);
+// let vuexStore = require('@/store/$u.mixin.js');
+// Vue.mixin(vuexStore);
 
 // 引入uView对小程序分享的mixin封装
 let mpShare = require('uview-ui/libs/mixin/mpShare.js');
@@ -62,7 +63,7 @@ Vue.prototype.$dateUtiles = DateUtiles
 Vue.prototype.$pathUtiles = PathUtiles
 const app = new Vue({
 	// i18n,
-	store,
+	store:Store,
 	...App
 });
 
