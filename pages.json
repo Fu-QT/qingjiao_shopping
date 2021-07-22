@@ -32,6 +32,20 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "mine/editAddress/editAddress",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "mine/address/address",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}]
 	}],
 
@@ -40,7 +54,7 @@
 		"navigationBarTitleText": "uView",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF",
-		"navigationStyle":"custom"
+		"navigationStyle": "custom"
 	},
 	"tabBar": {
 		"color": "#909399",

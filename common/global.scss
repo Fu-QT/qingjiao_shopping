@@ -27,13 +27,107 @@
 	margin-left: 10px;
 }
 
+
+
+//纵向高度
 .nb-container {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
 }
-
+//纵轴滑动
 .nb-body {
 	flex: 1 1 100%;
 	overflow-x: scroll;
 }
+
+
+
+.nb-flex-box {
+	display: flex;
+}
+//绝对居中
+.nb-flex-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+//自适应
+.nb-self-adaption{
+	flex: 1;
+}
+
+
+//纵向居中
+.nb-column-center{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+//纵向两端对齐
+.nb-column-space-between{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+//纵向平分
+.nb-column-average {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+
+
+// 横向平分
+.nb-average{
+	display: flex;
+	justify-content: space-evenly;
+}
+//换行
+.nb-wrap-flex-box{
+	display: flex;
+	flex-wrap: wrap;
+}
+//右对齐
+.nb-flex-end{
+	display: flex;
+	justify-content: flex-end;
+}
+//两端对齐
+.nb-space-between{
+	display: flex;
+	justify-content: space-between;
+}
+//横向居中
+.nb-center{
+	display: flex;
+	justify-content: center;
+}
+//两侧间隔相等
+.nb-around-flex{
+	display: flex;
+	justify-content: space-around;
+}
+//垂直右对齐
+.nb-end-flex{
+	display: flex;
+	align-items: flex-end;
+}
+//垂直中间对齐
+.nb-align-center{
+	display: flex;
+	align-items: center;
+}
+.nb-align-flex-start{
+	display: flex;
+	align-items: flex-start;
+}
+.nb-between-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
