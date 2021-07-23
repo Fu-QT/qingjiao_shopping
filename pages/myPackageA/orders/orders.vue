@@ -11,7 +11,7 @@
 							<view>订单编号</view>
 							<view>{{item.ID}}</view>
 						</view>
-						<view v-for="(commodity,index) in item.COMMODITY_DATA" style="padding: 20rpx 0;">
+						<view v-for="commodity in item.COMMODITY_DATA" style="padding: 20rpx 0;">
 							<view class="nb-between-center" v-for="shop in commodity" style="padding: 10rpx 0;">
 								<view class="nb-flex-box">
 									<view>
