@@ -97,10 +97,9 @@
 						￥{{grossAmount}}
 					</view>
 					<view style="margin-right: 10px;" class="u-skeleton-fillet">
-						<u-button size="mini" :disabled="checkAccountFlag ? false:true"
-							:type="checkAccountFlag? 'primary':''" @click="checkAccount"
-							:custom-style="checkAccountFlag ? customStyle:''">
-							{{ checkAccountFlag ? "去结算" : "请选择" }}
+						<u-button size="mini" :disabled="!showCheck()" :type="showCheck()? 'primary':''"
+							@click="checkAccount" :loading="showLoading" :custom-style="showCheck() ? customStyle:''">
+							{{ showCheck() ? "去结算" : "请选择" }}
 						</u-button>
 					</view>
 				</view>
@@ -132,7 +131,6 @@
 		},
 		data() {
 			return {
-
 				recommendList: [{
 						label: "来一杯朗姆酒",
 						img: "https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(1).jpg"
@@ -164,6 +162,7 @@
 				singleCommodity: {},
 				cartShow: false,
 				checkAccountFlag: true,
+				showLoading: false,
 				refresh: false,
 				commodityCount: 0,
 				grossAmount: 0,
@@ -196,8 +195,13 @@
 				console.log("navToDetails")
 			},
 			checkAccount() {
-				console.log("checkAccount", this.$store.state.mall.cacheCart)
-
+				this.showLoading = true
+				setTimeout(() => {
+					uni.navigateTo({
+						url: "settlement/settlement"
+					})
+					this.showLoading = false
+				}, 1000)
 			},
 			toCacheCart(item, count) {
 				console.log("toCacheCart", this.cacheCartList)
@@ -298,14 +302,23 @@
 				for (var i = 0; i < 4; i++) {
 					this.commodityList.push({
 						NAME: "",
-						FORMAT_VALUE:[],
-						ID:""
+						FORMAT_VALUE: [],
+						ID: ""
 					})
 				}
+			},
+			showCheck() {
+				let v = this.cacheCartList
+				if (!v || Object.keys(v).length == 0) {
+					return false
+				}
+				return true
 			}
 		},
 		onLoad() {
 			this.init()
+			this.cartCalculate()
+			this.showCheck()
 			setTimeout(() => {
 				this.queryGroup()
 			}, 500)
@@ -313,6 +326,8 @@
 		},
 		watch: {
 			"$store.state.mall.cacheCart"(v) {
+				console.log("vvvvv", v)
+
 				this.cacheCartList = v
 				this.cartCalculate()
 			}

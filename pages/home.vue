@@ -93,7 +93,7 @@
 		methods: {
 			navToshopping(item) {
 				uni.navigateTo({
-					url: "../shopping/shopping"
+					url: "myPackageA/shopping/shopping"
 				})
 			},
 			sectionChange(index) {
