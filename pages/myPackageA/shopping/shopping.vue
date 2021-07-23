@@ -152,6 +152,7 @@
 					'祝您用餐愉快'
 				],
 				current: 0,
+				cacheCartList:this.$store.state.mall.cacheCart,
 				tagList: [],
 				commodityList: [],
 				customStyle: {
@@ -318,7 +319,6 @@
 			setTimeout(() => {
 				this.queryGroup()
 			}, 500)
-
 		},
 		watch: {
 			"$store.state.mall.cacheCart"(v) {

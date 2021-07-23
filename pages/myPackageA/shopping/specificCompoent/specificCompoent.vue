@@ -48,7 +48,6 @@
 		props: {},
 		data() {
 			return {
-				cache: this.$store.state.mall.cacheCart,
 				show: false,
 				commodity: {},
 				specific: {},
