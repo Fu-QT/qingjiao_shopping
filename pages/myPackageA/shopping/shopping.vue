@@ -1,7 +1,6 @@
 <template>
 	<view>
 		<view class="nb-container u-skeleton">
-			<u-navbar :title="shopName"></u-navbar>
 			<view class="nb-body">
 				<!-- 今日推荐 -->
 				<view class="nb-container-box">
@@ -36,43 +35,48 @@
 								<view class=" u-skeleton-fillet">
 									{{ item.NAME }}
 								</view>
-
 							</view>
 						</view>
 						<!-- 右边盒子 -->
-						<view class="commodity-right-box">
-							<view class="nb-flex-box nb-padding-medium" v-for="item in commodityList"
-								@click="navToDetails(item)">
-								<view class="u-skeleton-fillet">
-									<u-image shape="square" borderRadius="10px" width="80px" height="80px"
-										src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg">
-									</u-image>
-								</view>
-								<view class="nb-mar-left-medium nb-flex-box commodity-content-box">
+						<view  class="commodity-right-box">
+							<view v-if="!commodityList || commodityList.length == 0" style="height: 50%;">
+								<u-empty text="该分类下还没有商品哦...." mode="car"></u-empty>
+							</view>
+							<view v-else>
+								<view class="nb-flex-box nb-padding-medium" v-for="item in commodityList"
+									@click="navToDetails(item)">
 									<view class="u-skeleton-fillet">
-										{{ item.NAME }}
+										<u-image shape="square" borderRadius="10px" width="80px" height="80px"
+											src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg">
+										</u-image>
 									</view>
-									<view class="nb-space-between">
-										<view class="price-box u-skeleton-fillet" style="color: red;font-weight: bold;">
-											￥ {{ item.MIN_PRICE }}
-										</view>
+									<view class="nb-mar-left-medium nb-flex-box commodity-content-box">
 										<view class="u-skeleton-fillet">
-											<view v-if="item.flag">
-												<u-button size="mini" @click="choiceSpacific(item)">
-													选规格
-												</u-button>
+											{{ item.NAME }}
+										</view>
+										<view class="nb-space-between">
+											<view class="price-box u-skeleton-fillet"
+												style="color: red;font-weight: bold;">
+												￥ {{ item.MIN_PRICE }}
 											</view>
-											<view v-else class="nb-flex-box">
-												<view class="nb-flex-box" v-if="getCount(item) > 0">
-													<view @click.stop="toCacheCart(item,-1)" class="icon-minus">
-														<u-icon name="minus" size="26"></u-icon>
-													</view>
-													<view class="number-input">
-														{{getCount(item)}}
-													</view>
+											<view class="u-skeleton-fillet">
+												<view v-if="item.flag">
+													<u-button size="mini" @click="choiceSpacific(item)">
+														选规格
+													</u-button>
 												</view>
-												<view @click.stop="toCacheCart(item,1)" class="icon-plus">
-													<u-icon name="plus" size="26"></u-icon>
+												<view v-else class="nb-flex-box">
+													<view class="nb-flex-box" v-if="getCount(item) > 0">
+														<view @click.stop="toCacheCart(item,-1)" class="icon-minus">
+															<u-icon name="minus" size="26"></u-icon>
+														</view>
+														<view class="number-input">
+															{{getCount(item)}}
+														</view>
+													</view>
+													<view @click.stop="toCacheCart(item,1)" class="icon-plus">
+														<u-icon name="plus" size="26"></u-icon>
+													</view>
 												</view>
 											</view>
 										</view>
@@ -169,8 +173,7 @@
 					count: 10
 				},
 				loading: true,
-				cacheCartList:this.$store.state.mall.cacheCart,
-				shopName:"商店",
+				cacheCartList: this.$store.state.mall.cacheCart,
 			}
 		},
 		methods: {
@@ -314,7 +317,6 @@
 			}
 		},
 		onLoad(name) {
-			this.shopName = name
 			this.init()
 			this.cartCalculate()
 			this.showCheck()
