@@ -2,9 +2,9 @@
 	<view style="background-color:#f1f1f1; min-height: 100vh">
 		<u-navbar back-text="返回" title="订单"></u-navbar>
 		<view class="distance-bottom">
-			<view class="container-box" v-for="(item,index) in 5"
+			<view class="nb-container-box" v-for="(item,index) in 5"
 				style="background-color: #FFFFFF;border-radius: 20rpx;">
-				<view class="container-box" style="padding: 20rpx 0;margin-top: 30rpx;">
+				<view class="nb-container-box" style="padding: 20rpx 0;margin-top: 30rpx;">
 					<view class="fs-mini nb-space-between"
 						style="border-bottom: 1rpx #f1f1f1 solid;padding-bottom: 20rpx;">
 						<view>订单编号</view>

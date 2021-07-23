@@ -1,7 +1,7 @@
 <template>
 	<view class="nb-container" style="background-color: #f1f1f1;">
 		<u-navbar back-text="返回" title="收货地址"></u-navbar>
-		<view class="nb-body container-box" v-if="addressList.length != 0">
+		<view class="nb-body nb-container-box" v-if="addressList.length != 0">
 			<view class=" card-box shadow-box" v-for="(item,index) in addressList">
 				<view class="nb-flex-box" style="padding: 20rpx;border-bottom: 1rpx #f1f1f1 solid;">
 					<view class="nb-align-center nb-self-adaption">

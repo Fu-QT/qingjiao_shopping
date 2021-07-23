@@ -10,7 +10,7 @@
 			</view>
 		</view>
 
-		<view class="container-box">
+		<view class="nb-container-box">
 			<view>
 				<u-form :model="form" ref="uForm">
 					<u-form-item label="收货人" prop="name" label-width="20%">

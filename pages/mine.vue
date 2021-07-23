@@ -1,6 +1,6 @@
 <template>
 	<view style="background-color: #f1f1f1;height: calc(100vh - 50px);">
-		<view class="container-box">
+		<view class="nb-container-box">
 			<view class="nb-flex-box shadow-box" style="padding: 20rpx 20rpx;background-color: #f1f1f1;border-radius: 20rpx;">
 				<view>
 					<visitor src=""></visitor>
