@@ -3,25 +3,31 @@
 		<u-navbar back-text="返回" title="提交订单"></u-navbar>
 		<view class="nb-body">
 			<view class="nb-container-box" style="margin-top: 20rpx;">
-				<!-- <view class="fs-mini" style="border-bottom: 1rpx #f1f1f1 solid;padding-bottom: 30rpx;">杨二妹炒洋芋</view> -->
-				<view class="nb-between-center" v-for="(item,index) in 10"
+				<view class="nb-between-center" v-for="(item,index) in commodity"
 					style="margin-bottom: 20rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;">
 					<view class="nb-flex-box">
 						<view>
-							<image style="width: 120rpx;height: 120rpx;" src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(1).jpg"
+							<!-- <image style="width: 120rpx;height: 120rpx;" src="../../../../static/fshan.jpg_.webp"
 								mode="">
-							</image>
+							</image> -->
+							<u-image height="80px" width="100px" shape="square" borderRadius="5px"
+								src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg"></u-image>
 						</view>
-						<view style="margin-left: 20rpx;">
-							<view class="fs-mini">鸡排</view>
-							<view class="c-gray fs-mini" style="margin-top: 6rpx;">微辣</view>
-							<view class="c-gray fs-mini" style="margin-top: 6rpx;">x1</view>
+						<view class="nb-column-space-between" style="margin-left: 20rpx;">
+							<view class="fs-mini">{{item.data.NAME}}</view>
+							<view class="c-gray fs-mini">{{item.format}}</view>
+							<view class="fs-small" style="color: red;">￥{{item.data.FORMAT_VALUE[item.format].PRICE}}
+							</view>
 						</view>
-
 					</view>
-					<view class="fs-mini" style="color: red;">￥5.8</view>
+					<view class="fs-small" style="">
+						x{{item.count}}
+					</view>
 				</view>
-
+				<view>
+					<view class="fs-medium nb-padding-medium">总价：<text style="color: #FA3534;">￥{{grossAmount}}元</text>
+					</view>
+				</view>
 			</view>
 		</view>
 		<view style="height: 150rpx;">
@@ -35,25 +41,47 @@
 	export default {
 		data() {
 			return {
-				commodity: [ //商品
-					{
-						picture: '', //商品图片
-						TradeName: '', //商品名称
-						Specifications: '', //规格
-						count: '', //商品数量
-						price: '', //商品价格
+				commodity: [{
+					data: {
+						FORMAT_VALUE: []
 					}
-				]
+				}],
+				grossAmount: 0, //总价
 			}
 		},
 		methods: {
-			payment(){
-				console.log("提交订单")
-				// uni.navigateTo({
-				// 	url:''
-				// })
-			}
+			payment() {
+				let order = [];
+				for (let key of Object.keys(this.commodity)) {
+					let data = {
+						ID: this.commodity[key].data.ID,
+						FORMAT: this.commodity[key].format,
+						SIZE: this.commodity[key].count
+					}
+					order.push(data)
+				}
+				console.log("fgsge", order)
+				let cnt = {
+					BILL_ID: 123,
+					data: order
+				}
+				this.$api.MallMerchantApi.addBill(cnt).then(data => {
+					console.log("提交订单", data)
+				})
+			},
+			cartCalculate() {
+				this.grossAmount = 0;
+				for (let key in this.commodity) {
+					let item = this.commodity[key]
+					this.grossAmount += (item.data.FORMAT_VALUE[item.format].PRICE * item.count)
+				}
+			},
 
+		},
+		onLoad() {
+			this.commodity = this.$store.state.mall.cacheCart
+			console.log("da", this.commodity)
+			this.cartCalculate()
 		}
 	}
 </script>
