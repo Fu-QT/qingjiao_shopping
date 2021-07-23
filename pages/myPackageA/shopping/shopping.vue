@@ -3,12 +3,12 @@
 		<view class="nb-container u-skeleton">
 			<view class="nb-body">
 				<!-- 今日推荐 -->
-				<view class="container-box">
-					<view class="flex-box">
+				<view class="nb-container-box">
+					<view class="nb-flex-box nb-align-center">
 						<view class="u-skeleton-fillet">
 							<u-icon name="thumb-up-fill" color="#065c8b" size="48"></u-icon>
 						</view>
-						<view class="mar-left-10 title-box u-skeleton-fillet">
+						<view class="nb-mar-left-medium title-box u-skeleton-fillet">
 							今日推荐
 						</view>
 					</view>
@@ -16,7 +16,7 @@
 						<view v-for="item in recommendList" class="item-box u-skeleton-fillet">
 							<u-image width="100%" height="100px" :src="item.img" shape="square" borderRadius="10px">
 							</u-image>
-							<view class="item-box-label column-flex-box">
+							<view class="item-box-label nb-column-center">
 								{{item.label}}
 							</view>
 						</view>
@@ -27,7 +27,7 @@
 						<u-notice-bar mode="horizontal" :volume-icon="false" :list="noticeList"></u-notice-bar>
 					</view>
 					<!-- 商品橱窗 -->
-					<view class="nb-body flex-box">
+					<view class="nb-body nb-flex-box">
 						<!-- 左边盒子 -->
 						<view class="commodity-left-box">
 							<view v-for="(item,index) in tagList" class="tags-box" :class="{currbox:item.flag}"
@@ -39,42 +39,40 @@
 							</view>
 						</view>
 						<!-- 右边盒子 -->
+
 						<view class="commodity-right-box">
-							<view class="flex-box" style="padding: 10px;" v-for="item in commodityList"
+							<view class="nb-flex-box nb-padding-medium" v-for="item in commodityList"
 								@click="navToDetails(item)">
 								<view class="u-skeleton-fillet">
-									<u-image shape="square" borderRadius="10px" width="100px" height="80px"
+									<u-image shape="square" borderRadius="10px" width="80px" height="80px"
 										src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(4).jpg">
 									</u-image>
 								</view>
-								<view class="mar-left-small flex-box commodity-content-box">
-									<view class=" u-skeleton-fillet">
+								<view class="nb-mar-left-medium nb-flex-box commodity-content-box">
+									<view class="u-skeleton-fillet">
 										{{ item.NAME }}
 									</view>
-									<view class="flex-box" style="justify-content: space-between;">
-										<view class="price-box u-skeleton-fillet" style="color: red;">
-											￥{{ item.MIN_PRICE }}
+									<view class="nb-space-between">
+										<view class="price-box u-skeleton-fillet" style="color: red;font-weight: bold;">
+											￥ {{ item.MIN_PRICE }}
 										</view>
-										<view>
-											<view v-if="item.flag" class="u-skeleton-fillet">
+										<view class="u-skeleton-fillet">
+											<view v-if="item.flag">
 												<u-button size="mini" @click="choiceSpacific(item)">
 													选规格
 												</u-button>
 											</view>
-											<view v-else class="flex-box u-skeleton-fillet"
-												style="align-items: center;">
-												<view class="flex-box" v-if="getCount(item) > 0">
-													<view @click.stop="toCacheCart(item,-1)">
-														<u-icon name="minus-circle-fill" color="#065c8b" size="40">
-														</u-icon>
+											<view v-else class="nb-flex-box">
+												<view class="nb-flex-box" v-if="getCount(item) > 0">
+													<view @click.stop="toCacheCart(item,-1)" class="icon-minus">
+														<u-icon name="minus" size="26"></u-icon>
 													</view>
-													<view style="padding: 0px 5px;">
+													<view class="number-input">
 														{{getCount(item)}}
 													</view>
 												</view>
-												<view @click.stop="toCacheCart(item,1)">
-													<u-icon name="plus-circle-fill" color="#065c8b" size="40">
-													</u-icon>
+												<view @click.stop="toCacheCart(item,1)" class="icon-plus">
+													<u-icon name="plus" size="26"></u-icon>
 												</view>
 											</view>
 										</view>
@@ -85,14 +83,14 @@
 					</view>
 				</view>
 			</view>
-			<view class="footer flex-box">
-				<view class="flex-box bottom-left-box " @click="$refs.cacheCartShow.open()">
+			<view class="footer nb-flex-box">
+				<view class="nb-flex-box bottom-left-box " @click="$refs.cacheCartShow.open()">
 					<u-badge :count="commodityCount" :offset="[20, 20]"></u-badge>
 					<view class="u-skeleton-circle">
 						<u-icon name="shopping-cart-fill" color="#065c8b" size="80"></u-icon>
 					</view>
 				</view>
-				<view class="flex-box bottom-rirht-box">
+				<view class="nb-self-adaption nb-between-center">
 					<view style="color: red" class="u-skeleton-fillet">
 						￥{{grossAmount}}
 					</view>
@@ -186,7 +184,6 @@
 				this.queryCommodity(item)
 			},
 			choiceSpacific(item) {
-				console.log("item", item)
 				this.$refs.specificShow.open(item)
 				this.singleCommodity = item
 			},
@@ -204,7 +201,6 @@
 				}, 1000)
 			},
 			toCacheCart(item, count) {
-				console.log("toCacheCart", this.cacheCartList)
 				count = this.getCount(item) + count
 				if (count >= 0) {
 					this.$store.commit("setCacheCart", {
@@ -326,8 +322,6 @@
 		},
 		watch: {
 			"$store.state.mall.cacheCart"(v) {
-				console.log("vvvvv", v)
-
 				this.cacheCartList = v
 				this.cartCalculate()
 			}
@@ -417,5 +411,37 @@
 		flex: 1;
 		justify-content: space-between;
 		align-items: center;
+	}
+
+	.icon-minus,
+	.icon-plus {
+		width: 30px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #F2F3F5;
+
+	}
+
+	.icon-plus {
+		border-radius: 0 8rpx 8rpx 0;
+
+	}
+
+	.number-input {
+		background-color: #F2F3F5;
+		text-align: center;
+		width: 40px;
+		height: 20px;
+		margin: 0 6rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+	}
+
+	.icon-minus {
+		border-radius: 8rpx 0 0 8rpx;
 	}
 </style>

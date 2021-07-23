@@ -8,7 +8,7 @@
 					style="margin-bottom: 20rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;">
 					<view class="nb-flex-box">
 						<view>
-							<image style="width: 120rpx;height: 120rpx;" src="../../../../static/fshan.jpg_.webp"
+							<image style="width: 120rpx;height: 120rpx;" src="https://3ch.oss-cn-hangzhou.aliyuncs.com/qj_task/img/1%20(1).jpg"
 								mode="">
 							</image>
 						</view>

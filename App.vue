@@ -134,5 +134,4 @@
 	@import "uview-ui/index.scss";
 	@import "common/demo.scss";
 	@import "common/global.scss";
-	@import "common/cssConst.css";
 </style>
