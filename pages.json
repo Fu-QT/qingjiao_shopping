@@ -5,70 +5,63 @@
 	"pages": [{
 		"path": "pages/home",
 		"style": {
-			"navigationBarTitleText": "",
+			"navigationBarTitleText": "美食广场",
 			"enablePullDownRefresh": false
 		}
 	}, {
 		"path": "pages/mine",
 		"style": {
-			"navigationBarTitleText": "",
+			"navigationBarTitleText": "我的",
 			"enablePullDownRefresh": false
 		}
 	}],
 	"subPackages": [{
 		"root": "pages/myPackageA",
-		"pages": [ {
-			"path": "shopping/shopping",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
+		"pages": [{
+				"path": "shopping/shopping",
+				"style": {
+					"navigationBarTitleText": "商店",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "mine/editAddress/editAddress",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
 
-		}, {
-			"path": "mine/editAddress/editAddress",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle":"custom"
+			}, {
+				"path": "mine/address/address",
+				"style": {
+					"navigationBarTitleText": "收货地址",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			},
+			{
+				"path": "index/index",
+				"style": {
+					"navigationBarTitleText": "收货地址",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "shopping/settlement/settlement",
+				"style": {
+					"navigationBarTitleText": "结算",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+			}, {
+				"path": "orders/orders",
+				"style": {
+					"navigationBarTitleText": "订单",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
 			}
-
-		}, {
-			"path": "mine/address/address",
-			"style": {
-				"navigationBarTitleText": "收货地址",
-				"enablePullDownRefresh": false,
-				"navigationStyle":"custom"
-			}
-		},
-		{
-			"path": "index/index",
-			"style": {
-				"navigationBarTitleText": "收货地址",
-				"enablePullDownRefresh": false
-			}
-		}
-		
-		    ,{
-                    "path" : "shopping/settlement/settlement",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "结算",
-                    "enablePullDownRefresh": false,
-					"navigationStyle":"custom"
-                }
-                
-                }
-                ,{
-                    "path" : "orders/orders",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "订单",
-                    "enablePullDownRefresh": false,
-					"navigationStyle":"custom"
-                }
-                
-                }
-            ]
+		]
 	}],
 
 	"globalStyle": {
@@ -76,7 +69,10 @@
 		"navigationBarTitleText": "uView",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF"
-		// "navigationStyle": "custom"
+			//#ifdef H5
+			,
+		"navigationStyle": "custom"
+		//#endif
 	},
 	"tabBar": {
 		"color": "#909399",
@@ -87,7 +83,7 @@
 				"pagePath": "pages/home",
 				"iconPath": "static/home_checked.png",
 				"selectedIconPath": "static/home_checked.png",
-				"text": "广场"
+				"text": "美食广场"
 			},
 			{
 				"pagePath": "pages/mine",

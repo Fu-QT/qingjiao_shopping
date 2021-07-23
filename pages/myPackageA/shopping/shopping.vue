@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<view class="nb-container u-skeleton">
+			<u-navbar :title="shopName"></u-navbar>
 			<view class="nb-body">
 				<!-- 今日推荐 -->
 				<view class="nb-container-box">
@@ -39,7 +40,6 @@
 							</view>
 						</view>
 						<!-- 右边盒子 -->
-
 						<view class="commodity-right-box">
 							<view class="nb-flex-box nb-padding-medium" v-for="item in commodityList"
 								@click="navToDetails(item)">
@@ -152,7 +152,6 @@
 					'祝您用餐愉快'
 				],
 				current: 0,
-				cacheCartList:this.$store.state.mall.cacheCart,
 				tagList: [],
 				commodityList: [],
 				customStyle: {
@@ -169,7 +168,9 @@
 					offset: 0,
 					count: 10
 				},
-				loading: true
+				loading: true,
+				cacheCartList:this.$store.state.mall.cacheCart,
+				shopName:"商店",
 			}
 		},
 		methods: {
@@ -312,7 +313,8 @@
 				return true
 			}
 		},
-		onLoad() {
+		onLoad(name) {
+			this.shopName = name
 			this.init()
 			this.cartCalculate()
 			this.showCheck()
