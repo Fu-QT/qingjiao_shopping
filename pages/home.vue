@@ -1,7 +1,7 @@
 <template>
 	<view style="background-color: #f1f1f1;">
 		<view class="container-box">
-			<view class="shadow-box" style="border-radius: 20rpx;padding: 10rpx 0;">
+			<view class="shadow-box" style="border-radius: 20rpx;">
 				<u-swiper :list="swiperList"></u-swiper>
 			</view>
 
