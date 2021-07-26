@@ -7,7 +7,6 @@
 				</view>
 				<view class="fs-medium nb-align-center" style="margin-left: 20rpx;">{{userInfo.NICKNAME}}</view>
 			</view>
-			
 			<!-- <view class="nb-wrap-flex-box  radius-box u-margin-top" style="padding: 40rpx 0;">
 				<view style="width: 25%;">
 					<view class="nb-center">10</view>
