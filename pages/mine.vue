@@ -3,9 +3,9 @@
 		<view class="nb-container-box">
 			<view class="nb-flex-box shadow-box" style="padding: 20rpx 20rpx;background-color: #f1f1f1;border-radius: 20rpx;">
 				<view>
-					<visitor src=""></visitor>
+					<visitor :src="userInfo.HEADER_IMG"></visitor>
 				</view>
-				<view class="fs-medium nb-align-center" style="margin-left: 20rpx;">张三</view>
+				<view class="fs-medium nb-align-center" style="margin-left: 20rpx;">{{userInfo.NICKNAME}}</view>
 			</view>
 			
 			<!-- <view class="nb-wrap-flex-box  radius-box u-margin-top" style="padding: 40rpx 0;">
@@ -86,6 +86,7 @@
 		},
 		data() {
 			return {
+				userInfo:{},
 				collectList: [
 					// {
 					// 	icon: 'http://3ch.oss-cn-hangzhou.aliyuncs.com/qjTest/static/myImg/workplace.png',
@@ -157,6 +158,10 @@
 				})
 			}
 
+		},
+		onLoad() {
+			this.userInfo = this.$store.state.user.userInfo
+			console.log("user",this.userInfo)
 		}
 	}
 </script>
